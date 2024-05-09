@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Evaluate</title>
+    <!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}"> -->
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+			NER App
+		</div>
+		<h1>Evaluate Model</h1>
+		<h2>Legends</h2>
+	<li style="color: red;">treatment</li>
+	<li style="color: pink;">test</li>
+	<li style="color: blue;">problem</li>
+
+	<div class="results">
+		<h2>{{file_name}} was seleted.</h2>
+
+
+	<div class="results">
+		<h2>Predicted Entities</h2>
+		<div class="child">
+		{% for sen, lab in zip(sentences, pred_label) -%}
+			{% for s, l in zip(sen, lab) -%}
+				{% if 'treatment' in l %}
+					<b style="color: red;">{{s + ' '}}</b> 			
+				{% elif 'test' in l %}
+					<b style="color: pink;">{{s + ' '}}</b> 			
+				{% elif 'problem' in l %}
+					<b style="color: blue;">{{s + ' '}}</b> 
+				{% else: %}
+					{{s + ' '}}
+				{%  endif %}
+			{%- endfor %}
+			<br>
+		{%- endfor %}
+		</div>
+	</div>
+
+	<div class="results">
+		<h2>True Entities</h2>
+		<div class="child">
+		{% for sen, lab in zip(sentences, true_label) -%}
+			{% for s, l in zip(sen, lab) -%}
+				{% if 'treatment' in l %}
+					<b style="color: red;">{{s + ' '}}</b> 				
+				{% elif 'test' in l %}
+					<b style="color: pink;">{{s + ' '}}</b> 
+				{% elif 'problem' in l %}
+					<b style="color: blue;">{{s + ' '}}</b> 
+				{% else: %}
+					{{s + ' '}}
+				{%  endif %}
+			{%- endfor %}
+			<br>
+		{%- endfor %}
+		</div>
+	</div>
+	<div>
+		<h2>Metrics </h2>
+		<p>Accuracy: {{acc}}</p>
+		<p>F1: {{f1}}</p>
+		<table style="width:30%">
+			<tr>
+				{% for col in column_names %}
+				<th>{{col}}</th>
+				{% endfor %}
+			</tr>
+			{% for row in row_data %}
+			<tr>
+				{% for row_ in row %}
+				<td>{{row_}}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	
+</body>
+</html>

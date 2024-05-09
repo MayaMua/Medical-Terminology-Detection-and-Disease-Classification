@@ -1,0 +1,19 @@
+Data/
+processed/
+raw/
+Bio_ClinicalBERT/
+trained_models/
+Assertion/trained_models/
+__pycache__/
+.idea/
+Examples/
+Results/
+requirements00.txt
+## files
+
+##----------Other----------
+# osx
+*~
+.DS_Store
+gradle.properties
+.ipynb_checkpoints/
