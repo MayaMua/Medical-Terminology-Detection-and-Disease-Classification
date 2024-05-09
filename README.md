@@ -10,10 +10,13 @@ In this project, we develop two models for two tasks in text mining, **namely na
 
 ## Project Description
 
+![Structure](Results/Running%20Results/Structure.png)
+
 The project is divided into two parts:
 
 1. Medical Terminology Detection
 2. Assertion Classification
+
 
 This project is a web application that can detect medical terminology and classify diseases. The project is based on the following technologies:
 
